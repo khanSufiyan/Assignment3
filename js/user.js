@@ -17,10 +17,12 @@ var TodoCollecetion = Backbone.Collection.extend({
 });
 var TodoView = Backbone.View.extend({
     tagName: 'div',
+    className:'todo-div',
     template: _.template($('#item-template').html()),
     events: {
       'click #comp': 'toggleCompleted',
-      'click #delete': 'clear'
+      'click #undo': 'toggleCompleted',
+      'click #delete': 'clear',
     },
       initialize: function () {
      this.model.on('change', this.render, this);
@@ -29,7 +31,10 @@ var TodoView = Backbone.View.extend({
 
     render: function(){
       this.$el.html(this.template(this.model.toJSON()));
-      this.$el.toggleClass('completed', this.model.get('completed'));
+      this.$("#comp").toggleClass('hidden', this.model.get('completed'));
+      this.$("#undo").toggleClass('hidden', !(this.model.get('completed')));
+
+      this.$("#todo-title").toggleClass('completed', this.model.get('completed'));
       return this;
     },
     toggleCompleted: function () {
@@ -54,13 +59,13 @@ var TodoListView = Backbone.View.extend({
         this.input = this.$('#todo_input');
         todoCollecetion.on('add', this.addAll, this);
         todoCollecetion.on('reset', this.addAll, this);
-        todoCollecetion.fetch(); // Loads list from local storage
+        todoCollecetion.fetch();
       },
       events: {
         'keypress #todo_input': 'createTodoOnEnter'
       },
       createTodoOnEnter: function(e){
-        if ( e.which !== 13 || !this.input.val().trim() ) { // ENTER_KEY = 13
+        if ( e.which !== 13 || !this.input.val().trim() ) {
           return;
         }
         todoCollecetion.create(this.newAttributes());
@@ -71,7 +76,7 @@ var TodoListView = Backbone.View.extend({
         $('#todo-list').append(view.render().el);
       },
       addAll: function(){
-        this.$('#todo-list').html(''); // clean the todo list
+        this.$('#todo-list').html('');
         todoCollecetion.each(this.addOne, this);
       },
       newAttributes: function(){

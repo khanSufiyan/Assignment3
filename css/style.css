@@ -2,9 +2,12 @@
 	list-style-type: none;
 }
 
+.hidden{
+	display: none;
+}
 .completed{
 	color: #d9d9d9;
-	text-decoration: line-through !important;
+	 text-decoration: line-through;
 }
 
 .todo-input input[type=text] {
@@ -34,6 +37,14 @@
   .delete{
     background: transparent;
     border: none;
+    visibility: hidden;
   }
+  .todo-div:hover .delete{
+    visibility : visible;
+}
   .comp i{    color: #7FFF00;}
   .delete i{    color: #FF1919;}
+
+  .todo-title{
+			font-size: 18px;;
+  }

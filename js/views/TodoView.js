@@ -1,9 +1,11 @@
 var TodoView = Backbone.View.extend({
     tagName: 'div',
+    className:'todo-div',
     template: _.template($('#item-template').html()),
     events: {
       'click #comp': 'toggleCompleted',
-      'click #delete': 'clear'
+      'click #undo': 'toggleCompleted',
+      'click #delete': 'clear',
     },
       initialize: function () {
      this.model.on('change', this.render, this);
@@ -12,7 +14,10 @@ var TodoView = Backbone.View.extend({
 
     render: function(){
       this.$el.html(this.template(this.model.toJSON()));
-      this.$el.toggleClass('completed', this.model.get('completed'));
+      this.$("#comp").toggleClass('hidden', this.model.get('completed'));
+      this.$("#undo").toggleClass('hidden', !(this.model.get('completed')));
+
+      this.$("#todo-title").toggleClass('completed', this.model.get('completed'));
       return this;
     },
     toggleCompleted: function () {
