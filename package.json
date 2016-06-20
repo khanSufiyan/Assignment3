@@ -1,0 +1,16 @@
+{
+  "name": "Beta",
+  "version": "5.0.1",
+  "description": "Beta 5.0 Frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sufiyan",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.9",
+    "grunt-contrib-concat": "^0.3.0"
+   }
+}
