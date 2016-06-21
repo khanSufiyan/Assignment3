@@ -29,8 +29,8 @@ var TodoView = Backbone.View.extend({
       'click #delete': 'clear'
     },
       initialize: function () {
-     this.model.on('change', this.render, this);
-     this.model.on('destroy', this.remove,this);
+       this.model.on('change', this.render, this);
+       this.model.on('destroy', this.remove,this);
     },
 
     render: function(){
