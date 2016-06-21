@@ -23,7 +23,7 @@ var TodoListView = Backbone.View.extend({
       },
       addOne: function(todo){
 
-        var view = new TodoView({model: todo});//Intializing TodoView
+        var view = new TodoView({model: todo});
 
         $('#todo-list').append(view.render().el);
       },

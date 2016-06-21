@@ -13,7 +13,7 @@ var TodoModel = Backbone.Model.extend({
 var TodoCollecetion = Backbone.Collection.extend({
 
 	model: TodoModel,
-	localStorage: new Store("todo-app"),//Initializing localStorage
+	localStorage: new Store("todo-app"),
 });
 var TodoView = Backbone.View.extend({
     tagName: 'div',
@@ -124,9 +124,9 @@ var TodoListView = Backbone.View.extend({
         todoCollecetion.create(this.newAttributes());
         this.input.val('');
       },
-      addOne: function(todo){
+      addOne: function(){
 
-        var view = new TodoView({model: todo});//Intializing TodoView
+        var view = new TodoView({model: todo});
 
         $('#todo-list').append(view.render().el);
       },
