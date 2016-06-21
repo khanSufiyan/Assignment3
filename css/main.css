@@ -6762,6 +6762,7 @@ button.close {
 }
 .todo-div:hover .delete {
   visibility: visible;
+  cursor: pointer;
 }
 .todo-div .edit {
   display: none;

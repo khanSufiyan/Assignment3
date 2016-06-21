@@ -5,6 +5,7 @@ var TodoListView = Backbone.View.extend({
 
       initialize: function () {
         todoCollecetion = new TodoCollecetion();
+
         this.input = this.$('#todo_input');
         todoCollecetion.on('add', this.addAll, this);
         todoCollecetion.on('reset', this.addAll, this);
@@ -18,10 +19,12 @@ var TodoListView = Backbone.View.extend({
           return;
         }
         todoCollecetion.create(this.newAttributes());
-        this.input.val(''); // clean input box
+        this.input.val('');
       },
       addOne: function(todo){
-        var view = new TodoView({model: todo});
+
+        var view = new TodoView({model: todo});//Intializing TodoView
+
         $('#todo-list').append(view.render().el);
       },
       addAll: function(){

@@ -1,5 +1,5 @@
 var TodoCollecetion = Backbone.Collection.extend({
 
 	model: TodoModel,
-	localStorage: new Store("todo-app"),
+	localStorage: new Store("todo-app"),//Initializing localStorage
 });
