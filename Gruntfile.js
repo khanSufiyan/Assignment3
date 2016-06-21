@@ -16,21 +16,6 @@ module.exports = function(grunt) {
     }
   },
 
-  /*concat: {
-    vendor:{
-      dest:'js/vendor.js',
-      src: [
-      'js/libs/jquery/jquery-min.js',
-      'js/libs/bootstrap/bootstrap.min.js',
-      'js/libs/backbone/backbone-min.js',
-      'js/libs/underscore/underscore-min.js',
-      'js/libs/handlebars/handlebars.js',
-      'js/libs/backbone.localstorage/backbone.localStorage.js',
-
-      ]
-    }
-  },*/
-
 less: {
       development: {
         options: {
@@ -50,6 +35,6 @@ less: {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-less');
    // tasks
-  grunt.registerTask('default', [ 'concat' ,'less']);
+  grunt.registerTask('default', [ 'concat','less']);
 
 };

@@ -124,7 +124,7 @@ var TodoListView = Backbone.View.extend({
         todoCollecetion.create(this.newAttributes());
         this.input.val('');
       },
-      addOne: function(){
+      addOne: function(todo){
 
         var view = new TodoView({model: todo});
 
