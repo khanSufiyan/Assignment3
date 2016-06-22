@@ -32,7 +32,16 @@ var TodoView = Backbone.View.extend({
     },
 
     clear: function () {
-      this.model.destroy();
+       var self = this;
+       alertify.confirm('Delete Todo?', 'Are you sure you want to delete this todo?',
+          function (){
+            self.model.destroy();
+          },
+          function (){
+            return;
+          }
+        );
+
     },
 
     edit: function () {

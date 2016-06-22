@@ -4,39 +4,40 @@
   <meta charset="utf-8">
   <title>To DO App</title>
   <link rel="stylesheet" href ="css/main.css">
+  <link rel="stylesheet" href ="css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href ="css/alertify.css">
+
+
  <link href='https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,greek' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
 <div id="todoapp" class ="container">
-
   <div class="row">
     <div class="col-sm-12 page-header head" id="todoapp">
       <h1>To Do Manager</h1><hr />
     </div>
   </div>
   <div class="row">
-  <div class="well col-sm-6">
-  <div class="row todo-input" align="center">
-    <div class="col-sm-12">
-      <input type="text" id="todo_input" placeholder="Enter Your Todos">
+    <div class="well col-sm-5 todo-main">
+      <div class="row todo-input" align="center">
+        <div class="col-sm-12">
+          <input type="text" id="todo_input" placeholder="Enter Your Todos">
+        </div>
+      </div>
+      <div class="row todo-list " align="center">
+        <div class="col-sm-12">
+          <div id="todo-list"></div>
+        </div>
+      </div>
+      <div class="foot" align="center">Double click to edit a todo</div>
+    </div>
+    <div class="well col-sm-5">
+      <span><a href="#/completed">Show Completed</a></span>
+      <span><a href="#/remaining">Show Remaining</a></span>
+      <div class="row" id="list"></div>
     </div>
   </div>
-  <div class="row todo-list " align="center">
-      <div class="col-sm-12">
-          <div id="todo-list"></div>
-      </div>
-    </div>
-    <div class="foot" align="center">Double click to edit a todo</div>
- </div>
- <div class=" well col-sm-6">
-  <div class="row">
-    <div class="col-sm-6"><a href="#/completed">Show Completed</a></div>
-    <div class="col-sm-6"><a href="#/remaining">Show Remaining</a></div>
-   </div>
-
-  <div class="row" id="list"></div>
-</div>
 </div>
 <script type="text/x-handlebars-template" id="item-template">
 
@@ -64,13 +65,17 @@
   <table class="table striped completed-item-table" id="completed-item-table">
   <thead>
     <tr>
-      <th></th>
+      <th>Title</th>
+      <th>Status</th>
+
     </tr>
   </thead>
   <tbody>
     {{#each this}}
     <tr>
       <td>{{this.attributes.title}}</td>
+       <td>{{#if this.attributes.completed }} Completed {{/if}}
+       </td>
     </tr>
     {{/each}}
   </tbody>
@@ -84,13 +89,18 @@
 <table class="table striped remaining-item-template" id="remaining-item-table">
   <thead>
     <tr>
-      <th></th>
+      <th>Title</th>
+      <th>Status</th>
+
     </tr>
   </thead>
   <tbody>
     {{#each this}}
     <tr>
       <td>{{this.attributes.title}}</td>
+       <td>{{#if this.attributes.completed }} Completed {{else}} Remaining{{/if}}
+       </td>
+
     </tr>
     {{/each}}
   </tbody>
@@ -105,6 +115,8 @@
   <script src="js/libs/handlebars/handlebars.js"></script>
   <script src="js/libs/backbone.localstorage/backbone.localStorage.js"></script>
   <script src="js/libs/jquery.dataTables/jquery.dataTables.min.js"></script>
+  <script src="js/libs/alertify/alertify.js"></script>
+
 
   <script src="js/user.js"></script>
   <script src="js/router.js"></script>
