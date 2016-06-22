@@ -6756,7 +6756,7 @@ body {
 }
 .todo-div .todo-title {
   font-size: 20px;
-  padding-left: 15%;
+  padding: 0;
 }
 .todo-div button {
   background: transparent;
@@ -6764,6 +6764,7 @@ body {
 }
 .todo-div .comp {
   margin-top: -3%;
+  padding: 0px;
 }
 .todo-div .delete {
   visibility: hidden;
@@ -6807,20 +6808,21 @@ body {
   font-size: smaller;
   color: #555;
 }
-a:link,
-a:visited {
-  background-color: #ddd;
-  padding: 5px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 8px;
-  height: 30px;
+/*a:link, a:visited {
+    background-color: #ffffff;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    height: 30px;
+    border: 1px solid #ddd;
 }
-a:hover,
-a:active {
-  background-color: #ddd;
+
+
+a:hover, a:active {
+    background-color: #ddd;
 }
+*/
 .checkbox {
   height: 40px;
   width: 40px;
@@ -6837,15 +6839,12 @@ a:active {
 .checkbox:checked:after {
   content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="5"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
 }
-/*.dataTables_length{
-  display: none;
-}*/
+.dataTables_length {
+  margin-top: 5%;
+}
 .dataTables_filter {
   margin-top: 5%;
 }
-.dataTables_info {
-  display: none;
-}
-.dataTables_length {
-  margin-top: 30px;
+.paginate_button {
+  padding: 0% !important;
 }
