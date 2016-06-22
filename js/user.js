@@ -14,6 +14,14 @@ var TodoCollecetion = Backbone.Collection.extend({
 
 	model: TodoModel,
 	localStorage: new Store("todo-app"),
+
+		completed: function () {
+			return this.where({completed: true});
+		},
+
+		remaining: function () {
+			return this.where({completed: false});
+		},
 });
 var TodoView = Backbone.View.extend({
     tagName: 'div',
@@ -21,7 +29,6 @@ var TodoView = Backbone.View.extend({
 
     events: {
       'click #comp': 'toggleCompleted',
-      'click #undo': 'toggleCompleted',
       'dblclick #todo-title': 'edit',
       'keypress .edit': 'updateOnEnter',
       'keydown .edit': 'revertOnEscape',
@@ -39,9 +46,6 @@ var TodoView = Backbone.View.extend({
       var template = Handlebars.compile(source);
       var html = template(this.model.toJSON());
       this.$el.html(html);
-
-      this.$("#comp").toggleClass('hidden', this.model.get('completed'));
-      this.$("#undo").toggleClass('hidden', !(this.model.get('completed')));
       this.$("#todo-title").toggleClass('completed', this.model.get('completed'));
 
       return this;
@@ -143,3 +147,48 @@ var TodoListView = Backbone.View.extend({
       });
 
 var todoListView = new TodoListView();
+
+
+var CompletedListView = Backbone.View.extend({
+
+       el: '#list',
+
+     render: function(){
+     /*var completed = JSON.stringify(todoCollecetion.completed());*/
+     var completed = todoCollecetion.completed();
+    var source = $('#completed-item-template').html();
+    var template = Handlebars.compile(source);
+    var html = template(completed);
+    this.$el.html(html);
+    $('#completed-item-table').dataTable();
+    return this;
+
+    },
+
+      });
+
+var completedListView = new CompletedListView();
+
+
+var RemainingListView = Backbone.View.extend({
+
+      el: '#list',
+
+     render: function(){
+
+    todoCollecetion.fetch();
+  /* var remaining = JSON.stringify(todoCollecetion.remaining());*/
+    var remaining = todoCollecetion.remaining();
+    var source = $('#remaining-item-template').html();
+    var template = Handlebars.compile(source);
+    var html = template(remaining);
+
+    this.$el.html(html);
+    $('#remaining-item-table').dataTable();
+    return this;
+
+    },
+
+      });
+
+var remainingListView = new RemainingListView();

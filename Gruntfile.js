@@ -12,6 +12,9 @@ module.exports = function(grunt) {
       'js/collections/TodoCollection.js',
       'js/views/TodoView.js',
       'js/views/TodoListView.js',
+      'js/views/completedListView.js',
+      'js/views/remainingListView.js',
+
       ]
     }
   },

@@ -4,7 +4,6 @@ var TodoView = Backbone.View.extend({
 
     events: {
       'click #comp': 'toggleCompleted',
-      'click #undo': 'toggleCompleted',
       'dblclick #todo-title': 'edit',
       'keypress .edit': 'updateOnEnter',
       'keydown .edit': 'revertOnEscape',
@@ -22,9 +21,6 @@ var TodoView = Backbone.View.extend({
       var template = Handlebars.compile(source);
       var html = template(this.model.toJSON());
       this.$el.html(html);
-
-      this.$("#comp").toggleClass('hidden', this.model.get('completed'));
-      this.$("#undo").toggleClass('hidden', !(this.model.get('completed')));
       this.$("#todo-title").toggleClass('completed', this.model.get('completed'));
 
       return this;
