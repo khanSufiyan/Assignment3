@@ -21,8 +21,14 @@
   <div class="row">
     <div class="well col-sm-5 todo-main">
       <div class="row todo-input" align="center">
-        <div class="col-sm-12">
+        <div class="col-sm-2 toggle-all-div">
+         <input  data-toggle="tooltip" title="Delete Competed Todos!" class="toggle-all" id="toggle-all" type="checkbox">
+        </div>
+        <div class="col-sm-8 todoInput">
           <input type="text" id="todo_input" placeholder="Enter Your Todos">
+        </div>
+        <div class="col-sm-2 clrCompleted" id="clrCompleted">
+          <i data-toggle="tooltip" title="Delete Competed Todos!" class="glyphicon glyphicon-trash" ></i>
         </div>
       </div>
       <div class="row todo-list " align="center">
@@ -43,12 +49,12 @@
 
   <div class="col-sm-10" align="left">
     <div class="row">
-      <span class="comp col-sm-2">
-        <input id="comp" class="toggle checkbox" type="checkbox"   {{#if this.completed }} checked {{/if}} >
-      </span>
-      <span class="todo-title col-sm-10" id="todo-title" >{{this.title}}</span>
-      <span class="edit col-sm-10" id="edit" ><input type="text"  id="editinput" value="{{this.title}}">
-      </span>
+      <div class="comp col-sm-2">
+        <input id="comp" class="toggle checkbox" type="checkbox" {{#if this.completed }} checked {{/if}} >
+      </div>
+      <div class="todo-title col-sm-10" id="todo-title" >{{this.title}}</div>
+      <div class="edit col-sm-10" id="edit" ><input type="text"  id="editinput" value="{{this.title}}">
+      </div>
     </div>
 
 
